@@ -1,33 +1,6 @@
-# Docker Rails Seed
+# (TODO: name this app)
 
-Following [Docker's Quickstart guide](https://docs.docker.com/compose/rails/) and ["Rails on Docker"](https://robots.thoughtbot.com/rails-on-docker)
-
-## How I use this
-
-Basic idea from [GitHub](https://help.github.com/articles/duplicating-a-repository/)
-
-```
-cd ~/workspace
-git clone https://github.com/smoll/docker-rails-seed
-cd docker-rails-seed
-make
-
-# Make some basic modifications to the skeleton by hand here
-
-git add .
-git commit -m "Initialize dockerized app"
-git push --mirror https://github.com/smoll/NEW_RAILS_PROJECT_HERE.git
-cd ..
-rm -rf docker-rails-seed.git
-```
-
-## General Usage
-
-0. Generate the Rails skeleton app (WARNING: this generates a lot of files in this directory!)
-
-    ```
-    $ make
-    ```
+## Usage
 
 0. Boot the app with
 
@@ -35,13 +8,11 @@ rm -rf docker-rails-seed.git
     $ docker-compose up
     ```
 
-0. Create the database with
+0. Run a rake db migration task inside the `web` container with
 
     ```
-    $ docker-compose run web rake db:create
+    $ docker-compose run web rake db:migrate
     ```
-
-    (Don't think this is necessary because `rails new` invoked by `make` automatically does this)
 
 0. Rebuild the docker image (NOTE: only if you make changes to the Dockerfile or Gemfile!) with
 
